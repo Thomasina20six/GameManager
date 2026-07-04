@@ -1,0 +1,42 @@
+# =========================
+# Java build outputs
+# =========================
+out/
+out-test/
+build/
+target/
+
+# Compiled class files
+*.class
+
+# =========================
+# Logs
+# =========================
+*.log
+
+# =========================
+# OS files
+# =========================
+.DS_Store
+Thumbs.db
+
+
+# ignore entire .vscode if your team uses different IDEs
+.vscode/
+
+# =========================
+# IntelliJ / Eclipse
+# =========================
+.idea/
+*.iml
+.project
+.classpath
+.settings/
+
+# =========================
+# Temporary files
+# =========================
+*.tmp
+*.swp
+
+javafx-sdk-*/

@@ -1,0 +1,131 @@
+.login-root {
+    -fx-background-color: #161616;
+    -fx-padding: 40px;
+}
+
+.pixel-panel-outer {
+    -fx-border-color: #C9A937;
+    -fx-border-width: 3px;
+    -fx-border-radius: 15px;
+}
+
+
+.pixel-panel-content {
+    -fx-background-color: rgba(42, 41, 41, 0.8);
+    -fx-padding: 30px;
+    -fx-spacing: 12px;
+    -fx-alignment: center;
+    -fx-background-radius: 15px;
+    -fx-border-radius: 20px;
+}
+
+.title-label {
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #C9A937;
+}
+
+.subtitle-label-green {
+    -fx-font-size: 12px;
+    -fx-text-fill: #3FAF1F;
+    -fx-padding: 0 0 8 0;
+}
+
+.subtitle-label-gold {
+    -fx-font-size: 12px;
+    -fx-text-fill: #E5C14A;
+    -fx-padding: 0 0 12 0;
+}
+
+.field-label {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #F5F5F5;
+}
+
+.pixel-text-field {
+    -fx-background-color: #101010;
+    -fx-text-fill: #F5F5F5;
+    -fx-border-color: #1E5F12,#111111;
+    -fx-border-width: 2, 1;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 8px;
+    -fx-padding: 10px;
+    -fx-font-size: 10px;
+    -fx-pref-width: 260px;
+}
+
+.pixel-text-field:focused {
+    -fx-border-color: #3FAF1F;
+    -fx-border-width: 2px;
+    -fx-border-radius: 8px;
+}
+
+.primary-button {
+    -fx-pref-width: 220px;
+    -fx-background-color: #3FAF1F;
+    -fx-text-fill: #F5F5F5;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-border-color: #7A5A1A;
+    -fx-border-width: 2px;
+    -fx-padding: 10px;
+}
+
+.primary-button:hover {
+    -fx-background-color: #56c21c;
+}
+
+.secondary-button {
+    -fx-pref-width: 220px;
+    -fx-background-color: #222222;
+    -fx-text-fill: #F5F5F5;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-border-color: #E5C14A;
+    -fx-border-width: 2px;
+    -fx-padding: 10px;
+}
+
+.secondary-button:hover {
+    -fx-background-color: #2D2D2D;
+}
+
+.error-label {
+    -fx-text-fill: #D64545;
+    -fx-font-size: 8px;
+    -fx-padding: 6px 0 0 0;
+}
+
+.success-label {
+    -fx-text-fill: #3FAF1F;
+    -fx-font-size: 8px;
+    -fx-padding: 6px 0 0 0;
+
+}
+
+/* Toolbar */
+.app-toolbar {
+    -fx-background-color: #222222;
+    -fx-border-color: #C9A937;
+    -fx-padding: 12px 16px 12px 16px;
+    -fx-min-height: 50px;
+    -fx-border-width: 0 0 2 0; /* bottom border */
+  }
+  .app-toolbar .button {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+  }
+  .app-toolbar .label {
+    -fx-text-fill: #F5F5F5;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 0 10px;
+  }
+
+  .app-toolbar .toolbar-title {
+    -fx-text-fill: #C9A937;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-padding: 0;
+  }

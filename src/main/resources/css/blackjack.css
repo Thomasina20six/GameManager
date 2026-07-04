@@ -1,0 +1,188 @@
+/* Blackjack menu (BlackjackMenuView) */
+.blackjack-menu-root {
+    -fx-background-image: url("/images/blackjack-bg.png");
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+    -fx-background-repeat: no-repeat;
+}
+
+.blackjack-menu-button:hover {
+    -fx-background-color: #2D2D2D;
+}
+
+.blackjack-menu-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #C9A937;
+}
+
+/* Blackjack table (BlackjackView) */
+.blackjack-game-root {
+    -fx-background-image: url("/images/blackjack-game-table.png");
+    -fx-background-size: 100% 100%;
+    -fx-background-position: center center;
+    -fx-background-repeat: no-repeat;
+}
+
+/* Overlays the felt (inside game center, below shell toolbar) */
+.blackjack-play-again {
+    -fx-background-color: rgba(30, 30, 30, 0.92);
+    -fx-text-fill: #F5F5F5;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-border-color: #C9A937;
+    -fx-border-width: 2px;
+    -fx-padding: 8px 14px;
+}
+
+.blackjack-play-again:hover {
+    -fx-background-color: rgba(55, 55, 55, 0.95);
+}
+
+.blackjack-play-again:disabled {
+    -fx-opacity: 0.35;
+}
+
+.blackjack-game-bottom {
+    -fx-background-color: #222222;
+    -fx-padding: 10px 16px;
+    -fx-border-color: #C9A937;
+    -fx-border-width: 2px 0 0 0;
+}
+
+.blackjack-player-name {
+    -fx-text-fill: #F5F5F5;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.blackjack-hand-value {
+    -fx-text-fill: #E8D78A;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}
+
+.blackjack-money-label {
+    -fx-text-fill: #E8D78A;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.blackjack-control-button {
+    -fx-pref-width: 88px;
+    -fx-min-width: 72px;
+    -fx-background-color: #2a2a2a;
+    -fx-text-fill: #F5F5F5;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-border-color: #C9A937;
+    -fx-border-width: 2px;
+    -fx-padding: 8px 6px;
+}
+
+.blackjack-control-button:hover {
+    -fx-background-color: #3d3d3d;
+}
+
+.blackjack-control-button:disabled {
+    -fx-opacity: 0.45;
+}
+
+.chip-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-border-color: transparent;
+}
+
+.chip-button:hover {
+    -fx-opacity: 0.9;
+}
+
+.chip-value-label {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(one-pass-box, rgba(0, 0, 0, 0.85), 2, 0, 1, 1);
+}
+
+.blackjack-status-label {
+    -fx-text-fill: #E5E14A;
+    -fx-font-size: 14px;
+    -fx-text-alignment: center;
+    -fx-padding: 0 0 0 30;
+}
+
+.blackjack-round-result {
+    -fx-font-family: "Arcadepix", "Segoe UI", Arial, sans-serif;
+    -fx-text-fill: #F0E68C;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+    -fx-wrap-text: true;
+    -fx-max-width: 250px;
+    -fx-padding: 0 0 0 30;
+}
+
+/* Full-table tap target: resume after save / load during bot or dealer */
+.blackjack-continue-root {
+    -fx-alignment: center;
+}
+
+.blackjack-continue-scrim {
+    -fx-background-color: rgba(0, 0, 0, 0.55);
+}
+
+.blackjack-continue-label {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #f5e6a8;
+    -fx-effect: dropshadow(one-pass-box, rgba(0, 0, 0, 0.95), 6, 0, 2, 2);
+}
+
+.blackjack-seat-balance {
+    -fx-text-fill: #C8C8C8;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.blackjack-start-over-root {
+    -fx-alignment: center;
+}
+
+.blackjack-start-over-scrim {
+    -fx-background-color: rgba(0, 0, 0, 0.42);
+}
+
+.blackjack-start-over-panel {
+    -fx-background-color: rgba(28, 28, 28, 0.96);
+    -fx-border-color: #C9A937;
+    -fx-border-width: 2px;
+    -fx-padding: 22px 28px;
+    -fx-spacing: 14px;
+    -fx-alignment: center;
+    -fx-max-width: 360px;
+}
+
+.blackjack-start-over-message {
+    -fx-font-family: "Segoe UI", "Arcadepix", Arial, sans-serif;
+    -fx-text-fill: #f5f5f5;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+    -fx-wrap-text: true;
+}
+
+.blackjack-start-over-button {
+    -fx-font-family: "Segoe UI", "Arcadepix", Arial, sans-serif;
+    -fx-background-color: #2d6a3a;
+    -fx-text-fill: #f5f5f5;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 28px;
+    -fx-border-color: #7ecf8c;
+    -fx-border-width: 2px;
+}
+
+.blackjack-start-over-button:hover {
+    -fx-background-color: #368a47;
+}
