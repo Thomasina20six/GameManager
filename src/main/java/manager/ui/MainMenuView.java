@@ -1,8 +1,10 @@
 package manager.ui;
 
 import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
@@ -11,6 +13,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
+import javafx.scene.control.Separator;
 import manager.HighScoreManager;
 import manager.HighScoreManager.ScoreEntry;
 import shared.SceneRouter;
@@ -26,17 +29,36 @@ public class MainMenuView {
      */
     public static Node createView() {
         BorderPane root = new BorderPane();
-        root.getStyleClass().add("main-menu-root");
-        root.setPadding(new Insets(28));
+        root.setPadding(new Insets(10));
+        root.getStyleClass().add("mainmenu-root");
+
+        VBox mainBox = new VBox(25);
+        mainBox.setPadding(new Insets(20, 30, 20, 20));
+        mainBox.setAlignment(Pos.CENTER);
+
+        Label title = new Label("----- MAIN MENU -----");
+        title.getStyleClass().add("title-label");
+
+        Label welcome = new Label("-----+ WELCOME BACK, " + getDisplayUsername() + " +-----");
+        welcome.getStyleClass().add("subtitle-label-green");
+
+        HBox content = new HBox(45);
+        content.setAlignment(Pos.CENTER);
 
         VBox leaderboardPane = createLeaderboardPane();
+        leaderboardPane.getStyleClass().add("pixel-panel-outer");
         VBox gameArea = createGameArea();
+        gameArea.getStyleClass().add("pixel-panel-outer");
 
-        HBox contents = new HBox(30, leaderboardPane, gameArea);
-        contents.setAlignment(Pos.CENTER);
-        HBox.setHgrow(gameArea, Priority.ALWAYS);
+        content.getChildren().addAll(leaderboardPane, gameArea);
 
-        root.setCenter(contents);
+        Label footer = new Label("-------- ★ CHOOSE A GAME TO BEGIN ★ --------");
+        footer.getStyleClass().add("subtitle-label-gold");
+
+        mainBox.getChildren().addAll(title, welcome, content, footer);
+        root.setCenter(mainBox);
+        root.getStylesheets().add(LoginView.class.getResource("/css/app.css").toExternalForm());
+        root.getStylesheets().add(LoginView.class.getResource("/css/manager.css").toExternalForm());
         return root;
     }
 
@@ -45,27 +67,27 @@ public class MainMenuView {
      */
     private static VBox createLeaderboardPane() {
         VBox pane = new VBox(18);
-        pane.getStyleClass().add("leaderboard-pane");
-        pane.setPrefSize(330, 590);
-        pane.setMinWidth(330);
-        pane.setMaxWidth(330);
+        pane.setPrefSize(470, 590);
         pane.setPadding(new Insets(22));
+        pane.setAlignment(Pos.CENTER);
 
-        Label title = new Label("LEADERBOARD");
+        Label title = new Label("+---- LEADERBOARD ----+");
         title.getStyleClass().add("leaderboard-title");
 
-        Label subtitle = new Label("Top 5 High Scores");
-        subtitle.getStyleClass().add("leaderboard-subtitle");
-
+        HBox firstRow = new HBox(12);
         VBox blackjackScores = createScoreSection("Blackjack", HighScoreManager.BLACKJACK);
+        VBox snakeScores = createScoreSection("Snake", HighScoreManager.SNAKE);
+        firstRow.getChildren().addAll(blackjackScores, snakeScores);
+
+        HBox secondRow = new HBox(12);
+        VBox tttScores = createScoreSection("Tic-Tac-Toe", HighScoreManager.TTT);
+        VBox wamScores = createScoreSection("Wack-a-Mole", HighScoreManager.WAM);
+        secondRow.getChildren().addAll(tttScores, wamScores);
 
         Region spacer = new Region();
         VBox.setVgrow(spacer, Priority.ALWAYS);
 
-        Label userLabel = new Label("Logged in as: " + getDisplayUsername());
-        userLabel.getStyleClass().add("leaderboard-user");
-
-        pane.getChildren().addAll(title, subtitle, blackjackScores, spacer, userLabel);
+        pane.getChildren().addAll(title, firstRow, secondRow, spacer);
         return pane;
     }
 
@@ -89,29 +111,43 @@ public class MainMenuView {
         rankHeader.getStyleClass().add("score-header");
         nameHeader.getStyleClass().add("score-header");
         scoreHeader.getStyleClass().add("score-header");
+        nameHeader.setPrefWidth(80);
+        scoreHeader.setPrefWidth(70);
+        scoreHeader.setAlignment(Pos.CENTER_RIGHT);
 
         scoreGrid.add(rankHeader, 0, 0);
         scoreGrid.add(nameHeader, 1, 0);
         scoreGrid.add(scoreHeader, 2, 0);
 
+        Label separator = new Label("------------------------------"); 
+        separator.getStyleClass().add("score-separator");
+        scoreGrid.add(separator, 0, 1, 3, 1);
+
         List<ScoreEntry> scores = HighScoreManager.getTopScores(gameName, 5);
-        for (int i = 0; i < 5; i++) {
-            Label rank = new Label(String.valueOf(i + 1));
+        for (int i = 1; i <= 5; i++) {
+            Label rank = new Label(String.valueOf(i));
             Label username = new Label("---");
             Label score = new Label("---");
 
             if (i < scores.size()) {
-                ScoreEntry entry = scores.get(i);
+                ScoreEntry entry = scores.get(i - 1);
                 username.setText(entry.getUsername());
                 score.setText(String.valueOf(entry.getScore()));
             }
 
-            rank.getStyleClass().add("score-text");
-            username.getStyleClass().add("score-text");
-            score.getStyleClass().add("score-text");
+            if(username.getText().equals(getDisplayUsername())) {
+                rank.getStyleClass().add("score-text-highlight");
+                username.getStyleClass().add("score-text-highlight");
+                score.getStyleClass().add("score-text-highlight");
+            } 
+            else {
+                rank.getStyleClass().add("score-text");
+                username.getStyleClass().add("score-text");
+                score.getStyleClass().add("score-text");
+            }
 
-            username.setPrefWidth(130);
-            score.setPrefWidth(65);
+            username.setPrefWidth(70);
+            score.setPrefWidth(70);
             score.setAlignment(Pos.CENTER_RIGHT);
 
             scoreGrid.add(rank, 0, i + 1);
@@ -127,30 +163,38 @@ public class MainMenuView {
      * Creates the game launcher area.
      */
     private static VBox createGameArea() {
-        Label title = new Label("GAME MANAGER");
-        title.getStyleClass().add("main-menu-title");
+        Label title = new Label("+---- SELECT GAME ----+");
+        title.getStyleClass().add("leaderboard-title");
 
-        Label subtitle = new Label("Choose a game to play");
-        subtitle.getStyleClass().add("main-menu-subtitle");
+        Button blackjackButton = createMenuButton("BLACKJACK");
+        Button snakeButton = createMenuButton("SNAKE");
+        Button tttButton = createMenuButton("TIC-TAC-TOE");
+        Button wackAMoleButton = createMenuButton("WACK-A-MOLE");
 
-        Button blackjackButton = createMenuButton("Blackjack");
-        Button snakeButton = createMenuButton("Snake");
-        Button button3 = createMenuButton("Coming Soon");
-        Button button4 = createMenuButton("Coming Soon");
+
+        blackjackButton.setOnMousePressed(e -> SoundManager.playClick());
+        snakeButton.setOnMousePressed(e -> SoundManager.playClick());
+        tttButton.setOnMousePressed(e -> SoundManager.playClick());
+        wackAMoleButton.setOnMousePressed(e -> SoundManager.playClick());
+
+        blackjackButton.getStyleClass().add("game-button");
+        snakeButton.getStyleClass().add("game-button");
+        tttButton.getStyleClass().add("game-button");
+        wackAMoleButton.getStyleClass().add("game-button");
 
         snakeButton.setDisable(true);
-        button3.setDisable(true);
-        button4.setDisable(true);
+        tttButton.setDisable(true);
+        wackAMoleButton.setDisable(true);
 
         blackjackButton.setOnAction(e -> {
             SoundManager.playClick();
             SceneRouter.showBlackjackMenu();
         });
 
-        VBox buttons = new VBox(18, blackjackButton, snakeButton, button3, button4);
+        VBox buttons = new VBox(18, blackjackButton, snakeButton, tttButton, wackAMoleButton);
         buttons.setAlignment(Pos.CENTER);
 
-        VBox gameArea = new VBox(14, title, subtitle, buttons);
+        VBox gameArea = new VBox(14, title, buttons);
         gameArea.getStyleClass().add("game-launcher-pane");
         gameArea.setAlignment(Pos.CENTER);
         gameArea.setPadding(new Insets(35));

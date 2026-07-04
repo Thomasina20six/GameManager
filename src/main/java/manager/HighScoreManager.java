@@ -21,6 +21,9 @@ import java.util.List;
 public class HighScoreManager {
 
     public static final String BLACKJACK = "BLACKJACK";
+    public static final String SNAKE = "SNAKE";
+    public static final String TTT = "Tic-Tac-Toe";
+    public static final String WAM = "Wack-a-Mole";
 
     private static final String SCORES_FILE = "data/high_scores.txt";
 
