@@ -3,6 +3,10 @@
     -fx-padding: 40px;
 }
 
+.mainmenu-root {
+    -fx-background-color: #161616;
+}
+
 .pixel-panel-outer {
     -fx-border-color: #C9A937;
     -fx-border-width: 3px;
@@ -104,6 +108,7 @@
 
 }
 
+
 /* Toolbar */
 .app-toolbar {
     -fx-background-color: #222222;
@@ -129,3 +134,50 @@
     -fx-font-weight: bold;
     -fx-padding: 0;
   }
+
+/* Leaderboard */
+.leaderboard-pane {
+    -fx-alignment: center;
+}
+.leaderboard-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #C9A937;
+    -fx-text-alignment: center;
+}
+.score-header {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #3FAF1F;
+}
+.score-separator {
+    -fx-font-size: 10px;
+    -fx-text-fill: #C9A937;
+}
+
+.score-text {
+    -fx-font-size: 10px;
+    -fx-text-fill: #F5F5F5;
+}
+
+.score-text-highlight {
+    -fx-font-size: 10px;
+    -fx-text-fill: #3FAF1F;
+    -fx-font-weight: bold;
+}
+
+/* Game Launcher */
+.game-button {
+    -fx-background-color: #161616;
+    -fx-text-fill: #F5F5F5;
+    -fx-font-size: 14px;
+    -fx-border-color: #C9A937;
+    -fx-border-width: 3px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+
+}
+
+.game-button:hover {
+    -fx-background-color: #3FAF1F;
+}
